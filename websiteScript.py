@@ -1,14 +1,30 @@
+import webbrowser
 import requests
 
-dates = ['20070501', '20150219', '20210701']
-responds = []
+pageurl = input("Podaj adres strony: ")
+date = input("Podaj date: ")
+url = 'http://archive.org/wayback/available?url=' + pageurl + '&timestamp=' + date
 
-for d in dates:
-    url ="http://archive.org/wayback/available?url=onet.pl&timestamp="+d
-    response = requests.get(url)
-    responds.append(response.json())
-for e in responds:
-    print(e)
-    print()
+response = requests.get(url)
+d = response.json()
+page = d['archived_snapshots']['closest']['url']
 
+webbrowser.open(page)
+pageurl = input("\nPodaj adres strony: ")
+date = input("Podaj date: ")
+url = 'http://archive.org/wayback/available?url=' + pageurl + '&timestamp=' + date
 
+response = requests.get(url)
+d = response.json()
+page = d['archived_snapshots']['closest']['url']
+
+webbrowser.open(page)
+pageurl = input("\nPodaj adres strony: ")
+date = input("Podaj date: ")
+url = 'http://archive.org/wayback/available?url=' + pageurl + '&timestamp=' + date
+
+response = requests.get(url)
+d = response.json()
+page = d['archived_snapshots']['closest']['url']
+
+webbrowser.open(page)
